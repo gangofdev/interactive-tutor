@@ -1,0 +1,4 @@
+# Ignore artifacts:
+dev-dist
+dist
+node_modules
