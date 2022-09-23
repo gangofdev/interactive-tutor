@@ -9,10 +9,9 @@ const CodeGround = () => {
   const { htmlCode, onHtmlChange } = useContext(CodeContext);
   return (
     <CodeMirror
-      className="text-sm"
+      className="text-xl"
       theme={theme}
       value={htmlCode}
-      height="100%"
       extensions={[html()]}
       onChange={onHtmlChange}
     />

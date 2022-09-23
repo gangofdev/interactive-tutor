@@ -17,7 +17,7 @@ export default function Description() {
   });
 
   return (
-    <div className="p-2 sm:px-0 h-screen">
+    <div className="p-2 sm:px-0">
       <Tab.Group>
         <Tab.List className="flex space-x-1 rounded-xl bg-black p-1">
           <Tab
