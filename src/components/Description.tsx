@@ -1,16 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Tab } from "@headlessui/react";
-
-interface DescriptionProps {
-  htmlCode: string;
-  onChange: (newValue: any) => void;
-}
+import CodeContext from "../contexts/CodeContext";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Description({ htmlCode, onChange }: DescriptionProps) {
+export default function Description() {
+  const { htmlCode } = useContext(CodeContext);
+
   let [categories] = useState({
     Description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe nulla dignissimos doloribus, labore blanditiis temporibus repellat sint quisquam quo in nihil cum sed quas nam cupiditate recusandae, deleniti quae dolorem.",

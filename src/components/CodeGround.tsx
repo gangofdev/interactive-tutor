@@ -1,20 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { html } from "@codemirror/lang-html";
+import ThemeContext from "../contexts/ThemeContext";
+import CodeContext from "../contexts/CodeContext";
 
-interface CodeGroundProps {
-  htmlCode: string;
-  onChange: (newValue: string) => void;
-}
-const CodeGround = ({ htmlCode, onChange }: CodeGroundProps) => {
+const CodeGround = () => {
+  const { theme }: any = useContext(ThemeContext);
+  const { htmlCode, onHtmlChange } = useContext(CodeContext);
   return (
     <CodeMirror
-      className="text-lg"
-      theme={"dark"}
+      className="text-sm"
+      theme={theme}
       value={htmlCode}
       height="100%"
       extensions={[html()]}
-      onChange={onChange}
+      onChange={onHtmlChange}
     />
   );
 };
