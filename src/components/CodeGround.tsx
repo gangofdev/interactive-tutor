@@ -12,7 +12,6 @@ const CodeGround = () => {
       className="text-xl"
       theme={theme}
       value={htmlCode}
-      height="100%"
       extensions={[html()]}
       onChange={onHtmlChange}
     />
