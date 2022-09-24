@@ -4,9 +4,8 @@ import Description from "./components/Description";
 import Navbar from "./components/Navbar";
 import { CodeProvider } from "./contexts/CodeContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
-
-import "react-reflex/styles.css";
-import { ReflexContainer, ReflexSplitter, ReflexElement } from "react-reflex";
+import { Allotment } from "allotment";
+import "allotment/dist/style.css";
 
 const App = () => {
   const [theme, setTheme] = useState("dark");
@@ -22,35 +21,23 @@ const App = () => {
       <ThemeProvider>
         <Navbar></Navbar>
         <CodeProvider>
-          <ReflexContainer orientation="vertical" className="flex flex-grow">
-            <ReflexElement>
-              <ReflexContainer orientation="horizontal">
-                <ReflexElement
-                  propagateDimensionsRate={200}
-                  propagateDimensions={true}
-                  flex={0.8}
-                >
-                  <CodeGround />
-                </ReflexElement>
-
-                <ReflexSplitter />
-
-                <ReflexElement className="bottom-pane">
-                  <div className="pane-content">
-                    <label className="text-white">Bottom Pane</label>
+          <Allotment minSize={100}>
+            <Allotment.Pane>
+              <Allotment vertical>
+                <Allotment.Pane minSize={100}>
+                  <div className="overflow-auto h-full">
+                    <CodeGround />
                   </div>
-                </ReflexElement>
-              </ReflexContainer>
-            </ReflexElement>
-
-            <ReflexSplitter />
-
-            <ReflexElement className="right-pane" flex={0.2}>
-              <div className="pane-content">
-                <Description></Description>
-              </div>
-            </ReflexElement>
-          </ReflexContainer>
+                </Allotment.Pane>
+                <Allotment.Pane snap>
+                  <div>bottom</div>
+                </Allotment.Pane>
+              </Allotment>
+            </Allotment.Pane>
+            <Allotment.Pane>
+              <Description />
+            </Allotment.Pane>
+          </Allotment>
         </CodeProvider>
       </ThemeProvider>
     </div>

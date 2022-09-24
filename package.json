@@ -13,9 +13,9 @@
     "@codemirror/lang-html": "^6.1.1",
     "@headlessui/react": "^1.7.2",
     "@uiw/react-codemirror": "^4.12.3",
+    "allotment": "^1.17.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-reflex": "^4.0.9"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
