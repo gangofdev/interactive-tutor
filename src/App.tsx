@@ -1,30 +1,58 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import CodeGround from "./components/CodeGround";
 import Description from "./components/Description";
 import Navbar from "./components/Navbar";
 import { CodeProvider } from "./contexts/CodeContext";
 import ThemeContext from "./contexts/ThemeContext";
-import { Allotment } from "allotment";
+import { Allotment, AllotmentHandle } from "allotment";
 import "allotment/dist/style.css";
+import Tests from "./components/Tests";
 
 const App = () => {
   const { theme }: any = useContext(ThemeContext);
   // refactor TODO
   const bgColour = theme === "dark" ? "bg-[#282C34]" : "bg-white";
+  const textColour = theme === "dark" ? "text-white" : "text-black";
+
+  const editorPaneRef = useRef() as React.RefObject<AllotmentHandle>;
+  const [testsExpanded, setTestsExpanded] = useState(false);
+
+  // snippet, get height of an element
+  // useEffect(() => {
+  //   if (editorPaneRef.current) {
+  //     const height = editorPaneRef.current.offsetHeight;
+  //     console.log("Input height", height);
+  //   }
+  // }, [editorPaneRef]);
   return (
-    <div className={`flex flex-col h-screen ${bgColour}`}>
+    <div className={`flex flex-col h-screen ${bgColour} ${textColour}`}>
       <Navbar />
       <CodeProvider>
-        <Allotment minSize={100}>
+        <Allotment>
           <Allotment.Pane>
-            <Allotment vertical>
-              <Allotment.Pane minSize={100}>
-                <div className="overflow-auto h-ful">
+            <Allotment vertical defaultSizes={[1000, 0]} ref={editorPaneRef}>
+              <Allotment.Pane>
+                <div className="overflow-auto h-full">
                   <CodeGround />
                 </div>
               </Allotment.Pane>
-              <Allotment.Pane snap>
-                <div>bottom</div>
+              <Allotment.Pane>
+                <Tests
+                  expanded={testsExpanded}
+                  onMaximize={() => {
+                    if (editorPaneRef.current) {
+                      editorPaneRef.current.resize([700, 300]);
+                    }
+                    setTestsExpanded(true);
+                  }}
+                  onMinimize={() => {
+                    // making sure editorPaneRef is not null
+                    if (editorPaneRef.current) {
+                      editorPaneRef.current.resize([1000, 0]);
+                    }
+                    setTestsExpanded(false);
+                  }}
+                />
               </Allotment.Pane>
             </Allotment>
           </Allotment.Pane>

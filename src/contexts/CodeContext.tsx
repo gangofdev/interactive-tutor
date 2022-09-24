@@ -13,6 +13,7 @@ export const CodeProvider = ({ children }: any) => {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>*{background-color:white}</style>
   </head>
   <body>
     <main>

@@ -12,6 +12,7 @@
   "dependencies": {
     "@codemirror/lang-html": "^6.1.1",
     "@headlessui/react": "^1.7.2",
+    "@heroicons/react": "^2.0.11",
     "@uiw/react-codemirror": "^4.12.3",
     "allotment": "^1.17.0",
     "react": "^18.2.0",
