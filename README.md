@@ -1,6 +1,9 @@
 # Interactive Tutor
 
-React app for an interactive coding website which helps you learn various web technologies.
+<div align="center">
+  <img src=https://user-images.githubusercontent.com/49370927/192148030-6d34abdd-dfdd-4380-8c5c-27ad19861baf.svg alt="Intutor Logo" width="200" />
+  </p>A React PWA for learning to code for the web.</p>
+</div>
 
 ## Configuration
 
