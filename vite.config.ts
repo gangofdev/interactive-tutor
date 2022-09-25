@@ -13,9 +13,9 @@ export default defineConfig({
       },
       includeAssets: ["favicon.ico", "apple-touch-icon.png", "masked-icon.svg"],
       manifest: {
-        name: "My Awesome App",
-        short_name: "MyApp",
-        description: "My Awesome App description",
+        name: "Interactive Tutor",
+        short_name: "Intutor",
+        description: "A PWA that helps you learn web technologies",
         theme_color: "#ffffff",
         icons: [
           {
@@ -32,4 +32,5 @@ export default defineConfig({
       },
     }),
   ],
+  base: "/interactive-tutor/",
 });
