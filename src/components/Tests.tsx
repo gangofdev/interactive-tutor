@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/24/solid";
+import ThemeContext from "../contexts/ThemeContext";
 
 interface TestsProps {
   onMinimize: () => void;
@@ -8,9 +9,13 @@ interface TestsProps {
 }
 
 const Tests = ({ onMinimize, onMaximize, expanded }: TestsProps) => {
+  const { theme } = useContext(ThemeContext);
+  const bgColour = theme === "dark" ? "bg-gray-700" : "bg-gray-200";
   return (
     <div className="flex flex-col">
-      <div className="w-full flex flex-row justify-between bg-gray-700 px-2 py-1">
+      <div
+        className={`w-full flex flex-row justify-between px-2 py-1 ${bgColour}`}
+      >
         <div>Tests</div>
         {expanded ? (
           <button onClick={onMinimize}>
