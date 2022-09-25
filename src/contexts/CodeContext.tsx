@@ -1,6 +1,21 @@
 import { createContext, useState } from "react";
 
-const CodeContext = createContext({
+interface CodeContextInterface {
+  html: {
+    htmlCode: string;
+    onHtmlChange: (htmlCode: string) => void;
+  };
+  css: {
+    cssCode: string;
+    onCssChange: (cssCode: string) => void;
+  };
+  js: {
+    jsCode: string;
+    onJsChange: (jsCode: string) => void;
+  };
+}
+
+const CodeContext = createContext<CodeContextInterface>({
   html: {
     htmlCode: "",
     onHtmlChange: (newCode: string): void => {},

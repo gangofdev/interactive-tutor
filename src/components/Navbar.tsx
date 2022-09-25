@@ -3,7 +3,6 @@ import ThemeContext from "../contexts/ThemeContext";
 import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 import LogoDark from "../assets/LogoDark.svg";
 import LogoLight from "../assets/LogoLight.svg";
-import BufferPicker from "./BufferPicker";
 import { RadioGroup } from "@headlessui/react";
 
 interface NavbarProps {
