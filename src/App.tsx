@@ -7,6 +7,7 @@ import ThemeContext from "./contexts/ThemeContext";
 import { Allotment, AllotmentHandle } from "allotment";
 import "allotment/dist/style.css";
 import Tests from "./components/Tests";
+import Preview from "./components/Preview";
 
 const App = () => {
   const { theme }: any = useContext(ThemeContext);
@@ -17,6 +18,20 @@ const App = () => {
   const editorPaneRef = useRef() as React.RefObject<AllotmentHandle>;
   const [testsExpanded, setTestsExpanded] = useState(false);
 
+  type displayPaneEnum = "Preview" | "Description";
+  const [displayPane, setDisplayPane] = useState<displayPaneEnum>("Preview");
+  const onChangeDisplayPane = (option: displayPaneEnum) => {
+    setDisplayPane(option);
+  };
+
+  // TODO Split Direction Toggle
+  // const [splitDirection, setSplitDirection] = useState<
+  //   "Vertical" | "Horizontal"
+  // >("Vertical");
+  // const onChangeSplitDirection = (option: "Vertical" | "Horizontal") => {
+  //   setSplitDirection(option);
+  // };
+
   // snippet, get height of an element
   // useEffect(() => {
   //   if (editorPaneRef.current) {
@@ -26,7 +41,10 @@ const App = () => {
   // }, [editorPaneRef]);
   return (
     <div className={`flex flex-col h-screen ${bgColour} ${textColour}`}>
-      <Navbar />
+      <Navbar
+        currentDisplayPane={displayPane}
+        onChangeDisplayPane={onChangeDisplayPane}
+      />
       <CodeProvider>
         <Allotment>
           <Allotment.Pane>
@@ -55,7 +73,13 @@ const App = () => {
             </Allotment>
           </Allotment.Pane>
           <Allotment.Pane>
-            <Description />
+            {displayPane == "Preview" ? (
+              <Preview />
+            ) : displayPane == "Description" ? (
+              <Description />
+            ) : (
+              <></>
+            )}
           </Allotment.Pane>
         </Allotment>
       </CodeProvider>

@@ -7,53 +7,31 @@ function classNames(...classes: string[]) {
 }
 
 export default function Description() {
-  const { htmlCode } = useContext(CodeContext);
-
-  const Description =
-    "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe nulla dignissimos doloribus, labore blanditiis temporibus repellat sint quisquam quo in nihil cum sed quas nam cupiditate recusandae, deleniti quae dolorem.";
-
   return (
-    <div className="p-2 sm:px-0 h-full">
-      <Tab.Group>
-        <Tab.List className="flex space-x-1 rounded-xl bg-black p-1">
-          <Tab
-            key={"Preview"}
-            className={({ selected }) =>
-              classNames(
-                "w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-blue-700",
-                "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2",
-                selected
-                  ? "bg-white shadow"
-                  : "text-blue-100 hover:bg-white/[0.12] hover:text-white"
-              )
-            }
-          >
-            Preview
-          </Tab>
-          <Tab
-            key={"Description"}
-            className={({ selected }) =>
-              classNames(
-                "w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-blue-700",
-                "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2",
-                selected
-                  ? "bg-white shadow"
-                  : "text-blue-100 hover:bg-white/[0.12] hover:text-white"
-              )
-            }
-          >
-            "Description"
-          </Tab>
-        </Tab.List>
-        <Tab.Panels className="mt-2 w-full h-full">
-          <Tab.Panel key={"Preview"} className={classNames("h-full")}>
-            <iframe srcDoc={htmlCode} className="w-full h-full"></iframe>
-          </Tab.Panel>
-          <Tab.Panel key={"Description"} className="p-4">
-            {Description}
-          </Tab.Panel>
-        </Tab.Panels>
-      </Tab.Group>
+    <div className="p-4 h-full">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore qui
+      laboriosam blanditiis expedita reiciendis mollitia totam commodi
+      necessitatibus labore nobis reprehenderit recusandae rem eius laborum
+      maxime impedit optio error eos ratione iure corporis assumenda, quis
+      animi. Nostrum, quis. Accusantium dignissimos, reprehenderit ducimus
+      voluptatum cum fugit suscipit sapiente necessitatibus expedita illum
+      quibusdam neque? Quisquam consequatur placeat exercitationem odit,
+      laudantium perferendis laboriosam amet fugiat fugit facere rerum
+      provident, corrupti magni voluptas blanditiis sed totam, libero deserunt
+      accusamus. Beatae perferendis, et aspernatur dolor maiores voluptatem ab
+      id esse exercitationem aperiam harum nobis illo fugit velit nesciunt quia
+      repellat consectetur inventore quis quibusdam. Voluptatem id provident
+      eligendi facilis nisi animi delectus, explicabo dolorum nemo tempore
+      veniam qui, odit cum. Sapiente laudantium, corporis provident recusandae
+      quaerat impedit laborum excepturi dicta ab ducimus illo amet veniam odit
+      animi eveniet consequuntur error possimus esse dolore necessitatibus ullam
+      temporibus quis! Exercitationem rem facere consectetur doloremque vero,
+      voluptatibus architecto necessitatibus soluta consequuntur iste molestias
+      libero aspernatur, harum dolorum! Adipisci dolorum culpa quae sapiente
+      suscipit, voluptates delectus assumenda nemo vero? Ab eligendi nihil ex
+      iusto nostrum? Saepe, dolor excepturi, sit esse necessitatibus eos
+      expedita id vel omnis et hic, cum est blanditiis! Reprehenderit totam
+      tempora consequuntur officia delectus dolores quisquam.
     </div>
   );
 }
