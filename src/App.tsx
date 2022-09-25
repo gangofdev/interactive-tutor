@@ -32,9 +32,7 @@ const App = () => {
           <Allotment.Pane>
             <Allotment vertical defaultSizes={[1000, 0]} ref={editorPaneRef}>
               <Allotment.Pane>
-                <div className="overflow-auto h-full">
-                  <CodeGround />
-                </div>
+                <CodeGround />
               </Allotment.Pane>
               <Allotment.Pane>
                 <Tests
