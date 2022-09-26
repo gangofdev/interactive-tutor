@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import CodeMirror from "@uiw/react-codemirror";
-import { html } from "@codemirror/lang-html";
-import { css } from "@codemirror/lang-css";
-import { javascript } from "@codemirror/lang-javascript";
+import { html as htmlPlugin } from "@codemirror/lang-html";
+import { css as cssPlugin } from "@codemirror/lang-css";
+import { javascript as jsPlugin } from "@codemirror/lang-javascript";
 import ThemeContext from "../contexts/ThemeContext";
 import CodeContext from "../contexts/CodeContext";
 import BufferPicker from "./BufferPicker";
@@ -10,13 +10,15 @@ import BufferPicker from "./BufferPicker";
 const CodeGround = () => {
   const buffers = ["HTML", "CSS", "JS"];
   const { theme }: any = useContext(ThemeContext);
-  const { htmlCode, onHtmlChange } = useContext(CodeContext);
-  const jsCode = "";
-  const cssCode = "";
+  const { html, css, js } = useContext(CodeContext);
+  const { htmlCode, onHtmlChange } = html;
+  const { cssCode, onCssChange } = css;
+  const { jsCode, onJsChange } = js;
   const [buffer, setBuffer] = useState(buffers[0]);
   const onBufferChange = (buffer: string) => {
     setBuffer(buffer);
   };
+
   return (
     <div className="overflow-auto h-full flex flex-col">
       <BufferPicker
@@ -30,17 +32,17 @@ const CodeGround = () => {
         value={buffer == "HTML" ? htmlCode : buffer == "CSS" ? cssCode : jsCode}
         extensions={
           buffer == "HTML"
-            ? [html()]
+            ? [htmlPlugin()]
             : buffer == "CSS"
-            ? [css()]
-            : [javascript()]
+            ? [cssPlugin()]
+            : [jsPlugin()]
         }
         onChange={
           buffer == "HTML"
             ? onHtmlChange
             : buffer == "CSS"
-            ? () => {}
-            : () => {}
+            ? onCssChange
+            : onJsChange
         }
       />
     </div>

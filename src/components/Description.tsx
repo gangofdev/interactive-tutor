@@ -1,11 +1,3 @@
-import { useContext, useState } from "react";
-import { Tab } from "@headlessui/react";
-import CodeContext from "../contexts/CodeContext";
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
-
 export default function Description() {
   return (
     <div className="p-4 h-full">

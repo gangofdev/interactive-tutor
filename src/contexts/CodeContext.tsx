@@ -1,8 +1,33 @@
 import { createContext, useState } from "react";
 
-const CodeContext = createContext({
-  htmlCode: "",
-  onHtmlChange: (newCode: string) => {},
+interface CodeContextInterface {
+  html: {
+    htmlCode: string;
+    onHtmlChange: (htmlCode: string) => void;
+  };
+  css: {
+    cssCode: string;
+    onCssChange: (cssCode: string) => void;
+  };
+  js: {
+    jsCode: string;
+    onJsChange: (jsCode: string) => void;
+  };
+}
+
+const CodeContext = createContext<CodeContextInterface>({
+  html: {
+    htmlCode: "",
+    onHtmlChange: (newCode: string): void => {},
+  },
+  css: {
+    cssCode: "",
+    onCssChange: (newCode: string): void => {},
+  },
+  js: {
+    jsCode: "",
+    onJsChange: (newCode: string): void => {},
+  },
 });
 
 export const CodeProvider = ({ children }: any) => {
@@ -51,11 +76,25 @@ export const CodeProvider = ({ children }: any) => {
   </body>
 </html>
   `);
-  const onHtmlChange = (newCode: string) => {
+  const [cssCode, setCssCode] = useState("");
+  const [jsCode, setJsCode] = useState("");
+  const onHtmlChange = (newCode: string): void => {
     setHtmlCode(newCode);
   };
+  const onCssChange = (newCode: string): void => {
+    setCssCode(newCode);
+  };
+  const onJsChange = (newCode: string): void => {
+    setJsCode(newCode);
+  };
   return (
-    <CodeContext.Provider value={{ htmlCode, onHtmlChange }}>
+    <CodeContext.Provider
+      value={{
+        html: { htmlCode, onHtmlChange },
+        css: { cssCode, onCssChange },
+        js: { jsCode, onJsChange },
+      }}
+    >
       {children}
     </CodeContext.Provider>
   );
