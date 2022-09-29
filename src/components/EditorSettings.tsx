@@ -24,10 +24,19 @@ const EditorSettings = ({
   currentFontSize,
   onChangeFontSize,
 }: EditorSettingsProps) => {
-  const sizes = ["xs", "sm", "base", "lg", "xl", "2xl", "3xl"];
+  const sizes: FontSizeEnum[] = [
+    "text-xs",
+    "text-sm",
+    "text-base",
+    "text-lg",
+    "text-xl",
+    "text-2xl",
+    "text-3xl",
+  ];
 
   const { theme, switchTheme } = useContext(ThemeContext);
   const bgColour = theme === "dark" ? "bg-gray-700" : "bg-gray-200";
+  const menuColour = theme === "dark" ? "bg-gray-800" : "bg-gray-100";
   return (
     <Menu as="div" className="relative inline-block text-left z-10">
       <Menu.Button
@@ -53,7 +62,12 @@ const EditorSettings = ({
                 <Disclosure>
                   {({ open }) => (
                     <>
-                      <Disclosure.Button>Font Size</Disclosure.Button>
+                      <Disclosure.Button
+                        className={`flex w-full justify-between rounded-lg ${menuColour} px-4 py-2 text-left text-sm font-medium bg-opacity-80 hover:bg-opacity-50 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
+                      >
+                        <div>Font Size</div>
+                        <div>{currentFontSize}</div>
+                      </Disclosure.Button>
 
                       {/*
                       Use the `Transition` + `open` render prop argument to add transitions.

@@ -9,19 +9,19 @@ import BufferPicker from "./BufferPicker";
 import EditorSettings from "./EditorSettings";
 
 export type FontSizeEnum =
-  | "xs"
-  | "sm"
-  | "base"
-  | "lg"
-  | "xl"
-  | "2xl"
-  | "3xl"
-  | "4xl"
-  | "5xl"
-  | "6xl"
-  | "7xl"
-  | "8xl"
-  | "9xl";
+  | "text-xs"
+  | "text-sm"
+  | "text-base"
+  | "text-lg"
+  | "text-xl"
+  | "text-2xl"
+  | "text-3xl"
+  | "text-4xl"
+  | "text-5xl"
+  | "text-6xl"
+  | "text-7xl"
+  | "text-8xl"
+  | "text-9xl";
 
 const CodeGround = () => {
   const buffers = ["HTML", "CSS", "JS"];
@@ -31,7 +31,7 @@ const CodeGround = () => {
   const { cssCode, onCssChange } = css;
   const { jsCode, onJsChange } = js;
   const [buffer, setBuffer] = useState(buffers[0]);
-  const [fontSize, setFontSize] = useState<FontSizeEnum>("lg");
+  const [fontSize, setFontSize] = useState<FontSizeEnum>("text-lg");
   const onBufferChange = (buffer: string) => {
     setBuffer(buffer);
   };
@@ -53,7 +53,7 @@ const CodeGround = () => {
         />
       </div>
       <CodeMirror
-        className={`text-${fontSize}`}
+        className={fontSize}
         theme={theme}
         value={buffer == "HTML" ? htmlCode : buffer == "CSS" ? cssCode : jsCode}
         extensions={
