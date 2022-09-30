@@ -80,68 +80,6 @@ const EditorSettings = ({
         <Menu.Items
           className={`${bgColour} absolute right-2 mt-2 w-72 origin-top-right divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
         >
-          <div className="px-2 py-2 ">
-            <Menu.Item>
-              {({ active }) => (
-                <Disclosure>
-                  {({ open }) => (
-                    <>
-                      <Disclosure.Button
-                        className={`flex w-full justify-between rounded-lg ${menuColour} px-4 py-2 text-left text-sm font-medium bg-opacity-80 hover:bg-opacity-50 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
-                      >
-                        <div>Font Size</div>
-                        <div>{fontSizes[currentFontSize]}</div>
-                      </Disclosure.Button>
-
-                      {/*
-                      Use the `Transition` + `open` render prop argument to add transitions.
-                    */}
-                      <Transition
-                        show={open}
-                        enter="transition duration-100 ease-out"
-                        enterFrom="transform scale-95 opacity-0"
-                        enterTo="transform scale-100 opacity-100"
-                        leave="transition duration-75 ease-out"
-                        leaveFrom="transform scale-100 opacity-100"
-                        leaveTo="transform scale-95 opacity-0"
-                      >
-                        {/*
-                        Don't forget to add `static` to your `Disclosure.Panel`!
-                      */}
-                        <Disclosure.Panel static>
-                          <RadioGroup
-                            value={currentFontSize}
-                            onChange={onChangeFontSize}
-                            className="flex flex-row justify-between items-center"
-                          >
-                            <RadioGroup.Label className="sr-only">
-                              Sizes
-                            </RadioGroup.Label>
-                            {sizes.map((size) => (
-                              <RadioGroup.Option
-                                key={size}
-                                value={size}
-                                className={({ checked }) =>
-                                  `${
-                                    checked
-                                      ? "bg-sky-900 bg-opacity-75 text-white"
-                                      : ""
-                                  } relative flex rounded-lg cursor-pointer p-2 outline-none`
-                                }
-                              >
-                                <CheckIcon className="hidden ui-checked:block" />
-                                {fontSizes[size]}
-                              </RadioGroup.Option>
-                            ))}
-                          </RadioGroup>
-                        </Disclosure.Panel>
-                      </Transition>
-                    </>
-                  )}
-                </Disclosure>
-              )}
-            </Menu.Item>
-          </div>
           <div
             className={`flex w-full justify-between items-center ${menuColour} px-4 py-2 text-left text-sm font-medium bg-opacity-80 hover:bg-opacity-50 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
           >
