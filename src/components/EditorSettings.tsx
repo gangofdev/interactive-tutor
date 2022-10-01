@@ -121,7 +121,7 @@ const EditorSettings = ({
                         }
                         value={size}
                       >
-                        {({}: any) => (
+                        {() => (
                           <>
                             <span
                               className={`block truncate ${

@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 interface CodeContextInterface {
   html: {
@@ -31,7 +32,9 @@ const CodeContext = createContext<CodeContextInterface>({
 });
 
 export const CodeProvider = ({ children }: any) => {
-  const [htmlCode, setHtmlCode] = useState(`<!DOCTYPE html>
+  const [htmlCode, setHtmlCode] = useLocalStorage(
+    "htmlCode",
+    `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -75,9 +78,10 @@ export const CodeProvider = ({ children }: any) => {
     </main>
   </body>
 </html>
-  `);
-  const [cssCode, setCssCode] = useState("");
-  const [jsCode, setJsCode] = useState("");
+  `
+  );
+  const [cssCode, setCssCode] = useLocalStorage("cssCode", "");
+  const [jsCode, setJsCode] = useLocalStorage("jsCode", "");
   const onHtmlChange = (newCode: string): void => {
     setHtmlCode(newCode);
   };

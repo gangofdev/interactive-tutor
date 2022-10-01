@@ -7,6 +7,7 @@ import ThemeContext from "../contexts/ThemeContext";
 import CodeContext from "../contexts/CodeContext";
 import BufferPicker from "./BufferPicker";
 import EditorSettings from "./EditorSettings";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export type FontSizeEnum =
   | "text-xs"
@@ -30,8 +31,11 @@ const CodeGround = () => {
   const { htmlCode, onHtmlChange } = html;
   const { cssCode, onCssChange } = css;
   const { jsCode, onJsChange } = js;
-  const [buffer, setBuffer] = useState(buffers[0]);
-  const [fontSize, setFontSize] = useState<FontSizeEnum>("text-lg");
+  const [buffer, setBuffer] = useLocalStorage("buffer", buffers[0]);
+  const [fontSize, setFontSize] = useLocalStorage<FontSizeEnum>(
+    "editorFont",
+    "text-lg"
+  );
   const onBufferChange = (buffer: string) => {
     setBuffer(buffer);
   };
