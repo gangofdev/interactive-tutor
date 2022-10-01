@@ -1,29 +1,62 @@
+import { BookOpenIcon } from "@heroicons/react/24/outline";
+import React, { useContext } from "react";
+import ReactMarkdown from "react-markdown";
+import ThemeContext from "../contexts/ThemeContext";
+import remarkGfm from "remark-gfm";
+
+const markdown = `
+# Introduction To Garlic Bread
+
+The history of garlic bread with cheese is a contentious issue. Some say the food was invented
+in ancient Rome, where bread was rubbed with garlic and then baked. Others say the food was
+invented in ancient India by great Indian chef Govardhan Ramsay.
+
+## The global pandemic
+
+Garlic bread with cheese has spread across the globe, with restaurants in every major city
+offering their own take on the dish. In the United States, garlic bread with cheese is often
+served as an appetizer, and is sometimes accompanied by a side of marinara sauce for dipping.
+
+### Table
+
+| Garlics | Breads | Countries | Rating |
+|---|---|---|---|
+| Nubia | Naan | India | 10 |
+| Lomagne | Pita | Greece | 10 |
+| Drôme | Croissant | France | 10 |
+
+### Tests
+* [x] passed
+* [ ] not passed
+`;
+
 export default function Description() {
+  const { theme } = useContext(ThemeContext);
+  const proseColor = theme === "dark" ? "prose-invert" : "";
+  const bgColour = theme === "dark" ? "bg-gray-600" : "bg-gray-200";
+  const sectionName = "Introduction to Garlic Bread";
   return (
-    <div className="p-4 h-full">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore qui
-      laboriosam blanditiis expedita reiciendis mollitia totam commodi
-      necessitatibus labore nobis reprehenderit recusandae rem eius laborum
-      maxime impedit optio error eos ratione iure corporis assumenda, quis
-      animi. Nostrum, quis. Accusantium dignissimos, reprehenderit ducimus
-      voluptatum cum fugit suscipit sapiente necessitatibus expedita illum
-      quibusdam neque? Quisquam consequatur placeat exercitationem odit,
-      laudantium perferendis laboriosam amet fugiat fugit facere rerum
-      provident, corrupti magni voluptas blanditiis sed totam, libero deserunt
-      accusamus. Beatae perferendis, et aspernatur dolor maiores voluptatem ab
-      id esse exercitationem aperiam harum nobis illo fugit velit nesciunt quia
-      repellat consectetur inventore quis quibusdam. Voluptatem id provident
-      eligendi facilis nisi animi delectus, explicabo dolorum nemo tempore
-      veniam qui, odit cum. Sapiente laudantium, corporis provident recusandae
-      quaerat impedit laborum excepturi dicta ab ducimus illo amet veniam odit
-      animi eveniet consequuntur error possimus esse dolore necessitatibus ullam
-      temporibus quis! Exercitationem rem facere consectetur doloremque vero,
-      voluptatibus architecto necessitatibus soluta consequuntur iste molestias
-      libero aspernatur, harum dolorum! Adipisci dolorum culpa quae sapiente
-      suscipit, voluptates delectus assumenda nemo vero? Ab eligendi nihil ex
-      iusto nostrum? Saepe, dolor excepturi, sit esse necessitatibus eos
-      expedita id vel omnis et hic, cum est blanditiis! Reprehenderit totam
-      tempora consequuntur officia delectus dolores quisquam.
-    </div>
+    <React.Fragment>
+      <div className="flex flex-col h-full">
+        <div
+          className={`flex flex-row justify-start gap-2 ${bgColour} px-4 py-2 bg-opacity-50 items-center`}
+        >
+          <BookOpenIcon className="w-6 h-auto" />
+          <h1 className="text-2xl">Study</h1>
+        </div>
+
+        <div
+          className={`flex flex-row justify-start px-4 pt-4 uppercase opacity-50 gap-2`}
+        >
+          <a>{sectionName}</a>
+        </div>
+
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          children={markdown}
+          className={`prose ${proseColor} px-4 py-2`}
+        />
+      </div>
+    </React.Fragment>
   );
 }
