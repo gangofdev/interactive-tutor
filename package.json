@@ -20,7 +20,8 @@
     "allotment": "^1.17.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-markdown": "^8.0.3"
+    "react-markdown": "^8.0.3",
+    "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",

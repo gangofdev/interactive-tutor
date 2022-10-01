@@ -2,21 +2,14 @@ import { BookOpenIcon } from "@heroicons/react/24/outline";
 import React, { useContext } from "react";
 import ReactMarkdown from "react-markdown";
 import ThemeContext from "../contexts/ThemeContext";
+import remarkGfm from "remark-gfm";
 
 const markdown = `
 # Introduction To Garlic Bread
 
-For years parents have espoused the health benefits of eating garlic bread with cheese to their
-children, with the food earning such an iconic status in our culture that kids will often dress
-up as warm, cheesy loaf for Halloween.
-
-## The patient zero
-
 The history of garlic bread with cheese is a contentious issue. Some say the food was invented
 in ancient Rome, where bread was rubbed with garlic and then baked. Others say the food was
-invented in the Middle Ages, when cheese was added to the bread to make it more palatable.
-Still others say the food was invented in the 20th century, when a chef at a restaurant in
-Italy accidentally dropped a piece of cheese on a piece of garlic bread.
+invented in ancient India by great Indian chef Govardhan Ramsay.
 
 ## The global pandemic
 
@@ -24,11 +17,17 @@ Garlic bread with cheese has spread across the globe, with restaurants in every 
 offering their own take on the dish. In the United States, garlic bread with cheese is often
 served as an appetizer, and is sometimes accompanied by a side of marinara sauce for dipping.
 
-### The future
+### Table
 
-Some experts are concerned that garlic bread with cheese may be nearing the end of its run.
+| Garlics | Breads | Countries | Rating |
+|---|---|---|---|
+| Nubia | Naan | India | 10 |
+| Lomagne | Pita | Greece | 10 |
+| Drôme | Croissant | France | 10 |
 
-
+### Tests
+* [x] passed
+* [ ] not passed
 `;
 
 export default function Description() {
@@ -53,6 +52,7 @@ export default function Description() {
         </div>
 
         <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
           children={markdown}
           className={`prose ${proseColor} px-4 py-2`}
         />
