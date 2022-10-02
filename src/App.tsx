@@ -8,6 +8,7 @@ import { Allotment, AllotmentHandle } from "allotment";
 import "allotment/dist/style.css";
 import Tests from "./components/Tests";
 import Preview from "./components/Preview";
+import { useLocalStorage } from "usehooks-ts";
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
@@ -19,8 +20,11 @@ const App = () => {
   const [testsExpanded, setTestsExpanded] = useState(false);
 
   type displayPaneEnum = "Preview" | "Description";
-  const [displayPane, setDisplayPane] =
-    useState<displayPaneEnum>("Description");
+  const [displayPane, setDisplayPane] = useLocalStorage<displayPaneEnum>(
+    "displayPane",
+    "Description"
+  );
+
   const onChangeDisplayPane = (option: displayPaneEnum) => {
     setDisplayPane(option);
   };
