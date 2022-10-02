@@ -51,11 +51,13 @@ export default function Description() {
           <a>{sectionName}</a>
         </div>
 
-        <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          children={markdown}
-          className={`prose ${proseColor} px-4 py-2`}
-        />
+        <div className="overflow-y-scroll">
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            children={markdown}
+            className={`prose ${proseColor} px-4 py-2`}
+          />
+        </div>
       </div>
     </React.Fragment>
   );
