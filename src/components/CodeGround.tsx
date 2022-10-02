@@ -7,7 +7,7 @@ import ThemeContext from "../contexts/ThemeContext";
 import CodeContext from "../contexts/CodeContext";
 import BufferPicker from "./BufferPicker";
 import EditorSettings from "./EditorSettings";
-import useLocalStorage from "../hooks/useLocalStorage";
+import { useLocalStorage } from "usehooks-ts";
 
 export type FontSizeEnum =
   | "text-xs"
