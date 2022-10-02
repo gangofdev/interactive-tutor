@@ -32,17 +32,6 @@ const Navbar = ({ currentDisplayPane, onChangeDisplayPane }: NavbarProps) => {
           className="flex flex-row justify-center items-center"
         >
           <RadioGroup.Label className="sr-only">Display Pane</RadioGroup.Label>
-
-          <RadioGroup.Option
-            value="Preview"
-            className={({ checked }) =>
-              `${
-                checked ? "bg-sky-900 bg-opacity-75 text-white" : ""
-              } relative flex rounded-lg cursor-pointer px-4 py-2 outline-none`
-            }
-          >
-            Preview
-          </RadioGroup.Option>
           <RadioGroup.Option
             value="Description"
             className={({ checked }) =>
@@ -52,6 +41,16 @@ const Navbar = ({ currentDisplayPane, onChangeDisplayPane }: NavbarProps) => {
             }
           >
             Description
+          </RadioGroup.Option>
+          <RadioGroup.Option
+            value="Preview"
+            className={({ checked }) =>
+              `${
+                checked ? "bg-sky-900 bg-opacity-75 text-white" : ""
+              } relative flex rounded-lg cursor-pointer px-4 py-2 outline-none`
+            }
+          >
+            Preview
           </RadioGroup.Option>
         </RadioGroup>
         <div className="bg-gray-500 w-0.5 h-6 opacity-50"></div>

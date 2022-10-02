@@ -10,7 +10,7 @@ import Tests from "./components/Tests";
 import Preview from "./components/Preview";
 
 const App = () => {
-  const { theme }: any = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   // refactor TODO
   const bgColour = theme === "dark" ? "bg-[#282C34]" : "bg-white";
   const textColour = theme === "dark" ? "text-white" : "text-black";
@@ -19,7 +19,8 @@ const App = () => {
   const [testsExpanded, setTestsExpanded] = useState(false);
 
   type displayPaneEnum = "Preview" | "Description";
-  const [displayPane, setDisplayPane] = useState<displayPaneEnum>("Preview");
+  const [displayPane, setDisplayPane] =
+    useState<displayPaneEnum>("Description");
   const onChangeDisplayPane = (option: displayPaneEnum) => {
     setDisplayPane(option);
   };
@@ -46,7 +47,7 @@ const App = () => {
         onChangeDisplayPane={onChangeDisplayPane}
       />
       <CodeProvider>
-        <Allotment>
+        <Allotment defaultSizes={[60, 40]}>
           <Allotment.Pane>
             <Allotment vertical defaultSizes={[1000, 0]} ref={editorPaneRef}>
               <Allotment.Pane>
