@@ -55,7 +55,7 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "engines": {
-    "node": ">=16.17.0",
+    "node": ">=16.17.1",
     "npm": ">=8.19.1"
   }
 }
