@@ -7,7 +7,7 @@
 
 ## Configuration
 
-In order to run the application you will need [nodejs](https://nodejs.org/en/) >=16.17.0 and [npm](https://docs.npmjs.com/cli/v8/commands/npm) >=8.19.1
+In order to run the application you will need [nodejs](https://nodejs.org/en/) >=16.17.1 and [npm](https://docs.npmjs.com/cli/v8/commands/npm) >=8.19.1
 
 We recommend that you use a tool like the [node version manager (nvm)](https://github.com/nvm-sh/nvm) to install node and npm
 
