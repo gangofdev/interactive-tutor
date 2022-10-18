@@ -47,32 +47,6 @@ const App = () => {
   //   }
   // }, [editorPaneRef]);
 
-  const testIframe = () => {
-    const criteria = {
-      text: "hello world",
-      classNames: ["text-2xl", "text-red-500"],
-      element: "h1",
-    };
-    const iframe = iframeRef.current?.contentDocument;
-    if (iframe) {
-      const { text, classNames, element } = criteria;
-      const elementNode = iframe.querySelector(element);
-      if (elementNode) {
-        const hasText = (elementNode as any).innerText === text;
-        const hasClassNames = classNames.every((className) =>
-          elementNode.classList.contains(className)
-        );
-        if (hasText && hasClassNames) {
-          alert(`Test Passed contains ${text} and ${classNames}`);
-        } else {
-          alert(`Test Failed does not contain ${text} and ${classNames}`);
-        }
-      } else {
-        alert(`Test Failed no element ${element}`);
-      }
-    }
-  };
-
   return (
     <div className={`flex flex-col h-screen ${bgColour} ${textColour}`}>
       <Navbar
@@ -95,7 +69,7 @@ const App = () => {
                     }
                     setTestsExpanded(true);
                   }}
-                  handleTest={testIframe}
+                  iframeRef={iframeRef}
                   onMinimize={() => {
                     // making sure editorPaneRef is not null
                     if (editorPaneRef.current) {
@@ -109,7 +83,7 @@ const App = () => {
           </Allotment.Pane>
           <Allotment.Pane>
             {displayPane == "Preview" ? (
-              <Preview ref={iframeRef} />
+              <Preview ref={iframeRef} iframeRef={iframeRef} />
             ) : displayPane == "Description" ? (
               <Description />
             ) : (

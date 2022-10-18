@@ -5,16 +5,43 @@ import ThemeContext from "../contexts/ThemeContext";
 interface TestsProps {
   onMinimize: () => void;
   onMaximize: () => void;
-  handleTest: () => void;
+  iframeRef: React.RefObject<HTMLIFrameElement>;
   expanded: boolean;
 }
 
-const Tests = ({
-  onMinimize,
-  onMaximize,
-  expanded,
-  handleTest,
-}: TestsProps) => {
+const Tests = ({ onMinimize, onMaximize, expanded, iframeRef }: TestsProps) => {
+  const testIframe = () => {
+    const criteria = {
+      text: "hello world",
+      classNames: ["text-2xl", "text-red-500"],
+      element: "h1",
+    };
+    let flag = false;
+    const iframe = iframeRef.current?.contentDocument;
+    if (iframe) {
+      const { text, classNames, element } = criteria;
+      const elementNodes = iframe.querySelectorAll<HTMLElement>(element);
+      if (elementNodes.length) {
+        elementNodes.forEach((elementNode) => {
+          const hasText = elementNode.innerText === text;
+          const hasClassNames = classNames.every((className) =>
+            elementNode.classList.contains(className)
+          );
+          if (hasText && hasClassNames) {
+            flag = true;
+          }
+        });
+      } else {
+        alert(`Test Failed no element ${element}`);
+        return;
+      }
+      if (flag) {
+        alert(`Test Passed contains ${text} and ${classNames}`);
+      } else {
+        alert(`Test failed does not contain ${text} and ${classNames}`);
+      }
+    }
+  };
   const { theme } = useContext(ThemeContext);
   const bgColour = theme === "dark" ? "bg-gray-700" : "bg-gray-200";
   return (
@@ -41,7 +68,7 @@ const Tests = ({
             </div>
             <button
               className="btn bg-green-400 rounded-lg w-24"
-              onClick={handleTest}
+              onClick={testIframe}
             >
               Run
             </button>
