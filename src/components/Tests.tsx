@@ -21,31 +21,99 @@ interface testType {
   status: string;
   criteria: criteriaType;
 }
+const getRandomWords = (num: number) => {
+  const words = [
+    "hello",
+    "world",
+    "this",
+    "is",
+    "a",
+    "test",
+    "for",
+    "random",
+    "words",
+    "generator",
+    "function",
+    "that",
+    "will",
+    "generate",
+    "random",
+    "words",
+    "for",
+    "us",
+    "to",
+    "use",
+    "in",
+    "our",
+    "tests",
+    "and",
+    "criteria",
+    "water",
+    "bottle",
+    "computer",
+    "mouse",
+    "keyboard",
+    "monitor",
+    "chair",
+    "table",
+    "lamp",
+    "phone",
+    "headphones",
+    "why",
+    "are",
+    "you",
+    "still",
+    "reading",
+  ];
+  const randomWords = [];
+  for (let i = 0; i < num; i++) {
+    randomWords.push(words[Math.floor(Math.random() * words.length)]);
+  }
+  return randomWords.join(" ");
+};
+
+const generateCriteria = () => {
+  const elements = ["h1", "h2", "h3", "h4", "h5", "h6", "p", "div"];
+  const classNames = [
+    "text-2xl",
+    "text-red-500",
+    "text-blue-500",
+    "text-green-500",
+    "text-yellow-500",
+  ];
+  //get random words text
+  const text = getRandomWords(3);
+
+  const element = elements[Math.floor(Math.random() * elements.length)];
+  const className = classNames[Math.floor(Math.random() * classNames.length)];
+  const criteria = {
+    text,
+    classNames: [className],
+    element,
+  };
+  return criteria;
+};
+// generate random test
+const generateTest = () => {
+  const id = Math.floor(Math.random() * 100000);
+  const status = "";
+  const error = "";
+  const criteria = generateCriteria();
+  const title = `Create ${criteria.element} with text '${criteria.text}' and classes '${criteria.classNames}'`;
+  const test: testType = {
+    id,
+    title,
+    status,
+    error,
+    criteria,
+  };
+  return test;
+};
+
 const Tests = ({ onMinimize, onMaximize, expanded, iframeRef }: TestsProps) => {
-  const [tests, setTests] = useState<testType[]>([
-    {
-      id: 1,
-      title: "Create h1 with 'hello world' and classes 'text-2xl text-red-500'",
-      status: "",
-      error: "test erroe message",
-      criteria: {
-        text: "hello world",
-        classNames: ["text-2xl", "text-red-500"],
-        element: "h1",
-      },
-    },
-    {
-      id: 2,
-      title: "Create h2 with 'hello world' and classes 'text-2xl text-red-500'",
-      status: "",
-      error: "test erroe message",
-      criteria: {
-        text: "hello world",
-        classNames: ["text-2xl", "text-red-500"],
-        element: "h2",
-      },
-    },
-  ]);
+  const [tests, setTests] = useState<testType[]>(
+    Array.from({ length: 5 }, generateTest)
+  );
   const runTests = () => {
     tests.forEach((test) => {
       testIframe(test.criteria, test.id);
