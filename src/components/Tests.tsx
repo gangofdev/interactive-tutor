@@ -129,6 +129,12 @@ const Tests = ({ onMinimize, onMaximize, expanded, iframeRef }: TestsProps) => {
               />
             ))}
           </>
+          <button
+            className="btn bg-green-400 rounded-lg w-24"
+            onClick={runTests}
+          >
+            Run
+          </button>
         </div>
       ) : (
         <></>
