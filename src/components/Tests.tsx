@@ -120,6 +120,7 @@ const Tests = ({ onMinimize, onMaximize, expanded, iframeRef }: TestsProps) => {
     });
   };
   const testIframe = (criteria: criteriaType, id: number) => {
+    console.log("testing iframe");
     let flag = false;
     const iframe = iframeRef.current?.contentDocument;
     if (iframe) {
@@ -175,6 +176,9 @@ const Tests = ({ onMinimize, onMaximize, expanded, iframeRef }: TestsProps) => {
         className={`w-full flex flex-row justify-between px-2 py-1 ${bgColour}`}
       >
         <div>Tests</div>
+        <button className="btn bg-green-400 rounded-lg w-24" onClick={runTests}>
+          Run
+        </button>
         {expanded ? (
           <button onClick={onMinimize}>
             <ChevronDownIcon className="h-6 w-6" />
@@ -197,12 +201,6 @@ const Tests = ({ onMinimize, onMaximize, expanded, iframeRef }: TestsProps) => {
               />
             ))}
           </>
-          <button
-            className="btn bg-green-400 rounded-lg w-24"
-            onClick={runTests}
-          >
-            Run
-          </button>
         </div>
       ) : (
         <></>

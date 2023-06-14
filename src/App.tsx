@@ -24,7 +24,7 @@ const App = () => {
   type displayPaneEnum = "Preview" | "Description";
   const [displayPane, setDisplayPane] = useLocalStorage<displayPaneEnum>(
     "displayPane",
-    "Description"
+    "Preview"
   );
 
   const onChangeDisplayPane = (option: displayPaneEnum) => {
