@@ -19,10 +19,12 @@ const App = () => {
   const editorPaneRef = useRef() as React.RefObject<AllotmentHandle>;
   const [testsExpanded, setTestsExpanded] = useState(false);
 
+  const iframeRef = useRef() as React.RefObject<HTMLIFrameElement>;
+
   type displayPaneEnum = "Preview" | "Description";
   const [displayPane, setDisplayPane] = useLocalStorage<displayPaneEnum>(
     "displayPane",
-    "Description"
+    "Preview"
   );
 
   const onChangeDisplayPane = (option: displayPaneEnum) => {
@@ -44,6 +46,7 @@ const App = () => {
   //     console.log("Input height", height);
   //   }
   // }, [editorPaneRef]);
+
   return (
     <div className={`flex flex-col h-screen ${bgColour} ${textColour}`}>
       <Navbar
@@ -66,6 +69,7 @@ const App = () => {
                     }
                     setTestsExpanded(true);
                   }}
+                  iframeRef={iframeRef}
                   onMinimize={() => {
                     // making sure editorPaneRef is not null
                     if (editorPaneRef.current) {
@@ -79,7 +83,7 @@ const App = () => {
           </Allotment.Pane>
           <Allotment.Pane>
             {displayPane == "Preview" ? (
-              <Preview />
+              <Preview ref={iframeRef} iframeRef={iframeRef} />
             ) : displayPane == "Description" ? (
               <Description />
             ) : (
